@@ -1,7 +1,4 @@
 library(timevis)
-
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-library(xlsx)
 library(dplyr)
 
 source("sampleData.R")
@@ -16,7 +13,7 @@ function(input, output, session) {
       orientation = "top",
       margin = list(item = 20, axis = 20)
     )
-    timevis(data = dataGroups, groups = groups, options = config)
+    fitWindow(timevis(data = dataGroups, groups = groups, options = config))
   })
 
   output$timelineCustom <- renderTimevis({

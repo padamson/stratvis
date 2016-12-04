@@ -1,0 +1,13 @@
+id,label,start,end,group,category,type,icon,style
+1,NMS,8/1/2016,NA,strategy,document,point,file,
+2,AFS,9/1/2016,NA,strategy,document,point,file,
+3,AFP,12/15/2016,NA,policy,document,point,file,
+4,DP,3/15/2017,NA,policy,document,point,file,
+5,FMP MS A,3/15/2016,NA,programs,missile,point,rocket,
+6,FMP SS,6/1/2016,9/15/2016,programs,missile,range,rocket,
+7,FFP MS B,2/1/2016,NA,programs,fighter,point,fighter,
+8,FFP TMRR,2/1/2016,3/15/2019,programs,fighter,range,fighter,
+9,FBP MS C,4/1/2016,NA,programs,bomber,point,plane,
+10,FBoP MS C,12/1/2015,NA,programs,bomb,point,bomb,
+11,Leader Transition,11/15/2016,2/15/2017,,,background,,background-color: #aaaaaa;
+12,FMP TMRR,3/15/2016,3/16/2018,programs,missile,range,rocket,

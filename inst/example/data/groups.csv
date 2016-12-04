@@ -1,0 +1,4 @@
+id,content,className,style
+strategy,Strategy,strategyGroup,color: black; background-color: #a8c0fc;
+policy,Policy,policyGroup,color: black; background-color: #d7e5e5;
+programs,Programs,programsGroup,color: black; background-color: #bbbbbb;

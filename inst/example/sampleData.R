@@ -1,4 +1,5 @@
-setwd('~/analytics/consulting/usaf/stratvis/inst/example/')
+#setwd('~/analytics/consulting/usaf/stratvis/inst/example/')
+setwd('C:\\workspace\\stratvis\\inst\\example')
 
 # Simple timeline with 4 items
 dataBasic <- data.frame(
@@ -54,8 +55,16 @@ dataWC <- data.frame(
 )
 
 # Data for stratvis version of groups example
+setClass('myDate')
+setAs("character","myDate", function(from) as.Date(from, format="%m/%d/%Y") )
+
 dataGroups <- 
-  read.xlsx(file='data.xlsx', sheetName = 'data', stringsAsFactors = FALSE) %>%
+  #read.xlsx(file='data.xlsx', sheetName = 'data', stringsAsFactors = FALSE) %>%
+  read.csv(file='data\\data.csv', stringsAsFactors = FALSE,
+           colClasses = c('numeric',
+                          'character',
+                          rep('myDate',2),
+                          rep('character',5))) %>%
   mutate(content =  
            ifelse(
              is.na(icon),
@@ -63,4 +72,4 @@ dataGroups <-
              sprintf('<img src="icons/%s.png" width="20" height="20" alt="%s"> %s', 
                      icon, icon, label)
              ) )
-groups <- read.xlsx(file='data.xlsx',sheetName = 'groups')
+groups <- read.csv(file='data\\groups.csv')

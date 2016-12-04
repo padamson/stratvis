@@ -1,0 +1,100 @@
+library(timevis)
+
+dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+library(xlsx)
+library(dplyr)
+
+source("sampleData.R")
+source("utils.R")
+
+function(input, output, session) {
+
+  output$timelineGroups <- renderTimevis({
+    config <- list(
+      editable = FALSE,
+      align = "center",
+      orientation = "top",
+      margin = list(item = 20, axis = 20)
+    )
+    timevis(data = dataGroups, groups = groups, options = config)
+  })
+
+  output$timelineCustom <- renderTimevis({
+    config <- list(
+      editable = TRUE,
+      align = "center",
+      orientation = "top",
+      snap = NULL,
+      margin = list(item = 30, axis = 50)
+    )
+    timevis(dataBasic, zoomFactor = 1, options = config)
+  })
+
+  output$timelineInteractive <- renderTimevis({
+    config <- list(
+      editable = TRUE,
+      multiselect = TRUE
+    )
+    timevis(dataBasic, options = config)
+  })
+
+  output$selected <- renderText(
+    paste(input$timelineInteractive_selected, collapse = " ")
+  )
+  output$window <- renderText(
+    paste(prettyDate(input$timelineInteractive_window[1]),
+          "to",
+          prettyDate(input$timelineInteractive_window[2]))
+  )
+  output$table <- renderTable({
+    data <- input$timelineInteractive_data
+    data$start <- prettyDate(data$start)
+    if(!is.null(data$end)) {
+      data$end <- prettyDate(data$end)
+    }
+    data
+  })
+  output$selectIdsOutput <- renderUI({
+    selectInput("selectIds", tags$h4("Select items:"), input$timelineInteractive_ids,
+                multiple = TRUE)
+  })
+  output$removeIdsOutput <- renderUI({
+    selectInput("removeIds", tags$h4("Remove item"), input$timelineInteractive_ids)
+  })
+
+  observeEvent(input$fit, {
+    fitWindow("timelineInteractive")
+  })
+  observeEvent(input$setWindowAnim, {
+    setWindow("timelineInteractive", "2016-01-07", "2016-01-25")
+  })
+  observeEvent(input$setWindowNoAnim, {
+    setWindow("timelineInteractive", "2016-01-07", "2016-01-25",
+              options = list(animation = FALSE))
+  })
+  observeEvent(input$center, {
+    centerTime("timelineInteractive", "2016-01-23")
+  })
+  observeEvent(input$focus2, {
+    centerItem("timelineInteractive", 4)
+  })
+  observeEvent(input$focusSelection, {
+    centerItem("timelineInteractive", input$timelineInteractive_selected)
+  })
+  observeEvent(input$selectItems, {
+    setSelection("timelineInteractive", input$selectIds,
+                 options = list(focus = input$selectFocus))
+  })
+  observeEvent(input$addBtn, {
+    addItem("timelineInteractive",
+            data = list(id = randomID(),
+                        content = input$addText,
+                        start = input$addDate))
+  })
+  observeEvent(input$removeItem, {
+    removeItem("timelineInteractive", input$removeIds)
+  })
+  observeEvent(input$addTime, {
+    addCustomTime("timelineInteractive", "2016-01-17", randomID())
+  })
+}

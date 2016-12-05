@@ -1,12 +1,12 @@
 share <- list(
-  title = "stratvis - An R package for timelines of hierarchical items",
+  title = "stratvis - A Shiny app for timelines of hierarchical items",
   url = "http://dataprone.com/shiny/stratvis-demo/",
   image = "http://dataprone.com/shiny/img/stratvis-demo.png",
   description = "Rich and fully interactive timeline visualization of hierarchical items.",
-  twitter_user = "usaf_a10"
+  twitter_user = "PaulEAdamson"
 )
 
 appName <- "stratvis"
-appDescription <- "An R package for timelines of hierarchical items"
+appDescription <- "A Shiny app for timelines of hierarchical items"
 sourceCodeOnGithub <- "https://github.com/padamson/stratvis/tree/master/inst/example"
 

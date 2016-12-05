@@ -6,17 +6,20 @@ source("ui-helpers.R")
 fluidPage(
   title =  paste(appName, appDescription, sep=" - "),
   tags$head(
+    tags$script(src="jquery.dataTables.min.js"),
     tags$link(href = "style.css", rel = "stylesheet"),
-
+    tags$link(href = "jquery.dataTables.min.css", rel = "stylesheet")
+    
     # Favicon
-    tags$link(rel = "shortcut icon", type="image/x-icon", href="favicon/favicon.ico")
+    #tags$link(rel = "shortcut icon", type="image/x-icon", href="favicon/favicon.ico")
+    
   ),
-  tags$a(
-    href="https://twitter.com/usaf_a10",
-    tags$img(style="position: absolute; top: 5px; right: 5px; border: 0;",
-             src="A10_Patch.png",
-             alt="Follow USAF/A10 on Twitter")
-  ),
+  #tags$a(
+  #  href="http://dataprone.info",
+  #  tags$img(style="position: absolute; top: 5px; right: 5px; border: 0; height: 220px;",
+  #           src="bsg.png",
+  #           alt="Follow PaulEAdamson on Twitter")
+  #),
   div(id = "header",
     div(id = "title",
       appName
@@ -24,8 +27,8 @@ fluidPage(
     div(id = "subtitle",
         appDescription),
     div(id = "subsubtitle",
-        "An",
-        tags$a(href = "https://twitter.com/usaf_a10", "A10"),
+        "A",
+        tags$a(href = "http://dataprone.info", "DataProne"),
         "App",
         HTML("&bull;"),
         "Available",
@@ -64,7 +67,7 @@ fluidPage(
                    class = 'tableSection',
                fluidRow(
                  tags$h4("Acronyms:"),
-                 column(12,tableOutput("acronyms"))
+                 column(12,dataTableOutput("acronyms"))
                )
                )
         )

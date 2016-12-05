@@ -4,10 +4,18 @@ library(dplyr)
 source("sampleData.R")
 source("utils.R")
 
+
 function(input, output, session) {
+  
 
   output$timelineGroups <- renderTimevis({
+    
+    customOrder <- function(a, b) {
+      #order by id
+      a$id - b$id;
+    }
     config <- list(
+      order = htmlwidgets::JS('function(a,b) {return a.id - b.id;}'),
       editable = FALSE,
       align = "center",
       orientation = "top",
@@ -20,11 +28,10 @@ function(input, output, session) {
     fitWindow("timelineGroups")
   })
   
-  output$acronyms <- renderTable({data=acronyms}, 
-                                 striped = TRUE,
-                                 rownames = FALSE,
-                                 colnames = FALSE,
-                                 spacing = 'xs')
+  output$acronyms <- renderDataTable(acronyms,
+                                     options = list(
+                                        paging = FALSE
+                                     )) 
 
   output$timelineCustom <- renderTimevis({
     config <- list(

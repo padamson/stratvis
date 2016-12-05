@@ -1,11 +1,14 @@
 acronym,full
-NS,National Strategy
-SS,Service Strategy
-SP,Service Policy
-DP,Directorate Policy
-FFP,Fake Fighter Program
+IS,Industry Strategy
+CS,Company Strategy
+CP,Company Policy
+DP,Division Policy
+FCP,Fake Car Program
 MS,Milestone
-FBP,Fake Bomber Program
-FBoP,Fake Bomb Program
-FMP,Fake Missile Program
-TMRR,Technology Maturation and Risk Reduction
+FSP,Fake Software Program
+FWP,Fake Widget Program
+RFWP,Really Fake Widget Program
+TMP,Technology Maturation Phase
+EDP,Engineering Development Phase
+SS,Source Selection
+CEO,Chief Executive Officer

@@ -8,7 +8,6 @@ source("utils.R")
 
 function(input, output, session) {
   
-
   output$timelineGroups <- renderTimevis({
     
     customOrder <- function(a, b) {

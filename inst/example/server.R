@@ -1,5 +1,6 @@
 library(timevis)
 library(dplyr)
+library(stringr)
 
 source("sampleData.R")
 source("utils.R")
@@ -28,11 +29,27 @@ function(input, output, session) {
     fitWindow("timelineGroups")
   })
   
-  output$acronyms <- renderDataTable(acronyms,
-                                     options = list(
-                                        paging = FALSE
-                                     )) 
-
+  output$acronyms <- DT::renderDataTable({
+    firstDate <- input$timelineGroups_window[1]
+    lastDate <- input$timelineGroups_window[2] 
+    data <- input$timelineGroups_data %>%
+      filter((is.na(end) & start > firstDate & start < lastDate) | 
+               ((!is.na(end) & start < lastDate) | (!is.na(end) & end > lastDate)))
+    acronyms %>% 
+      filter(grepl(
+        paste(unlist(str_split(data$label,pattern=" ")),collapse="|"), 
+        acronym)) %>%
+      select(acronym, full)
+  },
+    options = list(
+      paging = FALSE,
+      order = list(list(1, 'asc')),
+      rownames = FALSE,
+      columnDefs = list( list(visible=FALSE,targets=0) ),
+      colnames = c("Acronym","")
+    )
+  ) 
+  
   output$timelineCustom <- renderTimevis({
     config <- list(
       editable = TRUE,

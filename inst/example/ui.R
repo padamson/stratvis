@@ -1,4 +1,5 @@
 library(timevis)
+library(DT)
 
 source("ui-helpers.R")
 
@@ -6,9 +7,9 @@ source("ui-helpers.R")
 fluidPage(
   title =  paste(appName, appDescription, sep=" - "),
   tags$head(
-    tags$script(src="jquery.dataTables.min.js"),
-    tags$link(href = "style.css", rel = "stylesheet"),
-    tags$link(href = "jquery.dataTables.min.css", rel = "stylesheet")
+    #tags$script(src="jquery.dataTables.min.js"),
+    tags$link(href = "style.css", rel = "stylesheet")
+    #tags$link(href = "jquery.dataTables.min.css", rel = "stylesheet")
     
     # Favicon
     #tags$link(rel = "shortcut icon", type="image/x-icon", href="favicon/favicon.ico")
@@ -67,7 +68,7 @@ fluidPage(
                    class = 'tableSection',
                fluidRow(
                  tags$h4("Acronyms:"),
-                 column(12,dataTableOutput("acronyms"))
+                 column(12,DT::dataTableOutput("acronyms"))
                )
                )
         )

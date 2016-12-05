@@ -11,17 +11,18 @@ This app uses the `timevis` R package, which is based on the
 [vis.js](http://visjs.org/) Timeline module
 and the [htmlwidgets](http://www.htmlwidgets.org/) R package.
 
-Requirements
-------------
+Requirements/Features
+---------------------
 
 1. items read in from Excel file
-1. (TODO) theme with color-coded rows
-1. (TODO) data under version control
-1. (TODO) vertical line marking current date
+1. theme with color-coded groups
+1. data under version control
+1. vertical line marking current date
+1  button to fit all info into view
+1. acronym list auto populates with only those items in view
 1. (TODO) support multiple views (multiple options for grouping items); buttons to change view
 1. (TODO) form to input items into timeline, updating database
 1. (TODO) button to highlight particular items for presentations
-1. (TODO) acronym list auto populates with only those items in view
 1. (TODO) print to PDF
 1. (TODO) highlight overdue items 
 1. (TODO) highlight interactions between items
@@ -33,8 +34,8 @@ Prerequisites
 - `timevis` package
 - `Shiny` package
 - `dplyr` package
-- Java JDK
-- `xlsx` package
+- `stringr` package
+- `DT` package
 
 Configuration
 -------------

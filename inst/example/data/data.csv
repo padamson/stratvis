@@ -9,5 +9,5 @@ id,label,start,end,group,category,type,icon,style
 8,FFP TMRR,2/1/2016,3/15/2019,programs,fighter,range,fighter,
 9,FBP MS C,4/1/2016,NA,programs,bomber,point,plane,
 10,FBoP MS C,12/1/2015,NA,programs,bomb,point,bomb,
-11,Leader Transition,11/15/2016,2/15/2017,,,background,,background-color: #aaaaaa;
+11,Transition,11/9/2016,3/31/2017,strategy,,background,whitehouse,background-color: #c7d7fd;
 12,FMP TMRR,3/15/2016,3/16/2018,programs,missile,range,rocket,

@@ -13,7 +13,7 @@ fluidPage(
   ),
   tags$a(
     href="https://twitter.com/usaf_a10",
-    tags$img(style="position: absolute; top: 0; right: 0; border: 0;",
+    tags$img(style="position: absolute; top: 5px; right: 5px; border: 0;",
              src="A10_Patch.png",
              alt="Follow USAF/A10 on Twitter")
   ),
@@ -24,8 +24,8 @@ fluidPage(
     div(id = "subtitle",
         appDescription),
     div(id = "subsubtitle",
-        "A",
-        tags$a(href = "https://twitter.com/usaf_a10", "USAF/A10"),
+        "An",
+        tags$a(href = "https://twitter.com/usaf_a10", "A10"),
         "App",
         HTML("&bull;"),
         "Available",
@@ -36,8 +36,39 @@ fluidPage(
     id = "mainnav",
   
     tabPanel(
-      div(icon("calendar"), "Basic demo"),
-      timevisOutput("timelineGroups"),
+      div(icon("calendar"), "Production demo"),
+      fluidRow(
+        column(
+          12,
+          div(id = "interactiveActions",
+              class = "optionsSection",
+              #tags$h4("Actions:"),
+              actionButton("fitTimelineGroups", "Fit all items")
+              #actionButton("setWindowAnim", "Set window 2016-01-07 to 2016-01-25"),
+              #actionButton("setWindowNoAnim", "Set window without animation"),
+              #actionButton("center", "Center around 2016-01-23"),
+              #actionButton("focus2", "Focus item 4"),
+              #actionButton("focusSelection", "Focus current selection"),
+              #actionButton("addTime", "Add a draggable vertical bar 2016-01-17")
+          )
+        )
+      ),
+      fluidRow(
+        column(9,
+          fluidRow(
+            column(12,timevisOutput("timelineGroups"))
+          )
+        ),
+        column(3,
+               div(id = 'acronymsTable',
+                   class = 'tableSection',
+               fluidRow(
+                 tags$h4("Acronyms:"),
+                 column(12,tableOutput("acronyms"))
+               )
+               )
+        )
+      ),
       div(class = "sourcecode",
           "The exact code for all the timelines in this app is",
           tags$a(href = sourceCodeOnGithub,

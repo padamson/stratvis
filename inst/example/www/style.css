@@ -2,6 +2,14 @@ body {
   background: #fff;
 }
 
+h4 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 15px;
+  margin-top: 0;
+}
+
 #header {
   text-align: center;
   color: #fdfdfd;
@@ -151,7 +159,7 @@ body {
 
 /*timelineGroups options*/
 
-/*palette: #212632, #f6f8fc, #a8c0fc, #d7e5e5, #a8fbfc, #bbbbbb, #aaaaaa
+/*palette: #212632, #f6f8fc, #a8c0fc, #d7e5e5, #bbbbbb, #aaaaaa
 */
 
 #timelineGroups .vis-timeline {
@@ -267,16 +275,17 @@ body {
 }
 
 .optionsSection {
-  border: 1px solid #EEE;
+  border: 1px solid #ddd;
   border-radius: 3px;
-  background: #FCFCFC;
+  background: #fcfcfc;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
-.optionsSection h4 {
-  font-size: 1.3em;
-  font-weight: bold;
+.tableSection {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background: #fcfcfc;
+  padding: 10px;
   margin-bottom: 5px;
-  margin-top: 0;
 }

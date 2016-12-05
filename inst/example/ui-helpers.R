@@ -3,7 +3,7 @@ share <- list(
   url = "http://dataprone.com/shiny/stratvis-demo/",
   image = "http://dataprone.com/shiny/img/stratvis-demo.png",
   description = "Rich and fully interactive timeline visualization of hierarchical items.",
-  twitter_user = "padamson"
+  twitter_user = "usaf_a10"
 )
 
 appName <- "stratvis"

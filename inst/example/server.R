@@ -11,10 +11,20 @@ function(input, output, session) {
       editable = FALSE,
       align = "center",
       orientation = "top",
-      margin = list(item = 20, axis = 20)
+      margin = list(item = 5, axis = 5)
     )
-    fitWindow(timevis(data = dataGroups, groups = groups, options = config))
+    timevis(data = dataGroups, groups = groups, options = config)
   })
+  
+  observeEvent(input$fitTimelineGroups, {
+    fitWindow("timelineGroups")
+  })
+  
+  output$acronyms <- renderTable({data=acronyms}, 
+                                 striped = TRUE,
+                                 rownames = FALSE,
+                                 colnames = FALSE,
+                                 spacing = 'xs')
 
   output$timelineCustom <- renderTimevis({
     config <- list(
@@ -62,6 +72,7 @@ function(input, output, session) {
   observeEvent(input$fit, {
     fitWindow("timelineInteractive")
   })
+  
   observeEvent(input$setWindowAnim, {
     setWindow("timelineInteractive", "2016-01-07", "2016-01-25")
   })

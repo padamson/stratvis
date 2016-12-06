@@ -32,8 +32,9 @@ function(input, output, session) {
     firstDate <- input$timelineGroups_window[1]
     lastDate <- input$timelineGroups_window[2] 
     data <- input$timelineGroups_data %>%
-      filter((is.na(end) & start > firstDate & start < lastDate) | 
-               ((!is.na(end) & start < lastDate) | (!is.na(end) & end > lastDate)))
+      select(label,start,end) %>%
+      filter((is.na(end) & (start > firstDate & start < lastDate)) | 
+               (!is.na(end) & (start < lastDate & end > firstDate)))
     acronyms %>% 
       filter(grepl(
         paste(unlist(str_split(data$label,pattern=" ")),collapse="|"), 

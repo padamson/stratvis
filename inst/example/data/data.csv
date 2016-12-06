@@ -5,7 +5,7 @@ id,label,start,end,group,category,type,icon,style
 4,DP,3/15/2017,NA,policy,document,point,file,
 5,FCP MS A,3/15/2016,NA,programs,car,point,car,
 6,FCP SS,6/1/2016,9/15/2016,programs,car,range,car,
-7,FCP TMRR,10/1/2016,3/15/2019,programs,car,range,car,
+7,FCP TMP,10/1/2016,3/15/2019,programs,car,range,car,
 8,FSP MS B,2/1/2016,NA,programs,software,point,software,
 9,FSP EDP,2/1/2016,3/15/2019,programs,software,range,software,
 10,FWP MS C,4/1/2016,NA,programs,widget,point,widget,

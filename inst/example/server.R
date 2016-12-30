@@ -10,10 +10,6 @@ function(input, output, session) {
   
   output$timelineGroups <- renderTimevis({
     
-    customOrder <- function(a, b) {
-      #order by id
-      a$id - b$id;
-    }
     config <- list(
       order = htmlwidgets::JS('function(a,b) {return a.id - b.id;}'),
       editable = FALSE,
@@ -32,12 +28,14 @@ function(input, output, session) {
     firstDate <- input$timelineGroups_window[1]
     lastDate <- input$timelineGroups_window[2] 
     data <- input$timelineGroups_data %>%
-      select(label,start,end) %>%
-      filter((is.na(end) & (start > firstDate & start < lastDate)) | 
-               (!is.na(end) & (start < lastDate & end > firstDate)))
+      select(content,type,start,end) %>%
+      filter(((type == 'point' | type == 'box') & (start > firstDate & start < lastDate)) | 
+               ((type == 'range' | type == 'background') & (start < lastDate & end > firstDate)))
     acronyms %>% 
       filter(grepl(
-        paste(unlist(str_split(data$label,pattern=" ")),collapse="|"), 
+        paste0("\\<",
+               paste(unlist(str_split(data$content,pattern=" ")),collapse="\\>|\\<"),
+               "\\>"), 
         acronym)) %>%
       select(acronym, full)
   },

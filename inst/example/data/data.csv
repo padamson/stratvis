@@ -1,4 +1,4 @@
-id,label,start,end,group,category,type,icon,style
+id,content,start,end,group,category,type,icon,style
 1,IS,8/1/2016,NA,strategy,document,point,file,
 2,CS,9/1/2016,NA,strategy,document,point,file,
 3,CP,12/15/2016,NA,policy,document,point,file,

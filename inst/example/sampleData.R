@@ -20,9 +20,9 @@ dataGroups <-
   mutate(content =  
            ifelse(
              is.na(icon),
-             label,
+             content,
              sprintf('<img src="icons/%s.png" width="20" height="20" alt="%s"> %s', 
-                     icon, icon, label)
+                     icon, icon, content)
              ) )
 groups <- read.csv(file='data/groups.csv')
 acronyms <- read.csv(file='data/acronyms.csv')

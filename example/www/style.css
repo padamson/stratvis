@@ -204,6 +204,30 @@ h4 {
   border-radius: 3pt;
 }
 
+#timelineGroups .nwcGroup .vis-item {
+  background-color: #a8c0fc;
+  font-size: 12pt;
+  color: black;
+  box-shadow: 5px 5px 20px rgba(0,0,128, 0.3);
+  border-radius: 3pt;
+}
+
+#timelineGroups .afcsGroup .vis-item {
+  background-color: #d7e5e5;
+  font-size: 12pt;
+  color: black;
+  box-shadow: 5px 5px 20px rgba(0,0,128, 0.3);
+  border-radius: 3pt;
+}
+
+#timelineGroups .majcomGroup .vis-item {
+  background-color: #bbbbbb;
+  font-size: 12pt;
+  color: black;
+  box-shadow: 5px 5px 20px rgba(0,0,128, 0.3);
+  border-radius: 3pt;
+}
+
 /* timelineCustom options */
 
 #timelineCustom {

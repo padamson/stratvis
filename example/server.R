@@ -2,9 +2,9 @@ library(timevis)
 library(dplyr)
 library(stringr)
 
-source("sampleData.R")
-source("utils.R")
-
+source("setup.R", local=TRUE)
+source("readData.R", local = TRUE)
+source("utils.R", local = TRUE)
 
 function(input, output, session) {
   
@@ -24,6 +24,10 @@ function(input, output, session) {
     fitWindow("timelineGroups")
   })
   
+  observeEvent(input$showSubobjectives, {
+    addSubobjectives("timelineGroups", subobjectives)
+  })
+  
   output$acronyms <- DT::renderDataTable({
     firstDate <- input$timelineGroups_window[1]
     lastDate <- input$timelineGroups_window[2] 
@@ -39,13 +43,13 @@ function(input, output, session) {
         acronym)) %>%
       select(acronym, full)
   },
-    options = list(
-      paging = FALSE,
-      order = list(list(1, 'asc')),
-      rownames = FALSE,
-      columnDefs = list( list(visible=FALSE,targets=0) ),
-      colnames = c("Acronym","")
-    )
+  options = list(
+    paging = FALSE,
+    order = list(list(1, 'asc')),
+    rownames = FALSE,
+    columnDefs = list( list(visible=FALSE,targets=0) ),
+    colnames = c("Acronym","")
+  )
   ) 
   
   output$timelineCustom <- renderTimevis({
@@ -58,7 +62,7 @@ function(input, output, session) {
     )
     timevis(dataBasic, zoomFactor = 1, options = config)
   })
-
+  
   output$timelineInteractive <- renderTimevis({
     config <- list(
       editable = TRUE,
@@ -66,7 +70,7 @@ function(input, output, session) {
     )
     timevis(dataBasic, options = config)
   })
-
+  
   output$selected <- renderText(
     paste(input$timelineInteractive_selected, collapse = " ")
   )
@@ -90,7 +94,7 @@ function(input, output, session) {
   output$removeIdsOutput <- renderUI({
     selectInput("removeIds", tags$h4("Remove item"), input$timelineInteractive_ids)
   })
-
+  
   observeEvent(input$fit, {
     fitWindow("timelineInteractive")
   })

@@ -1,8 +1,8 @@
 library(timevis)
 library(DT)
 
-source("ui-helpers.R")
-
+source("setup.R", local=TRUE)
+source("ui-helpers.R", local = TRUE)
 
 fluidPage(
   title =  paste(appName, appDescription, sep=" - "),
@@ -12,7 +12,9 @@ fluidPage(
     #tags$link(href = "jquery.dataTables.min.css", rel = "stylesheet")
     
     # Favicon
-    #tags$link(rel = "shortcut icon", type="image/x-icon", href="favicon/favicon.ico")
+    #if(appname == 'a10') {
+    #tags$link(rel = "shortcut icon", type="image/x-icon", href="favicon_a10/favicon.ico")
+    #}
     
   ),
   #tags$a(
@@ -38,7 +40,7 @@ fluidPage(
   ),
   tabsetPanel(
     id = "mainnav",
-  
+    
     tabPanel(
       div(icon("calendar"), "Production demo"),
       fluidRow(
@@ -47,7 +49,8 @@ fluidPage(
           div(id = "interactiveActions",
               class = "optionsSection",
               #tags$h4("Actions:"),
-              actionButton("fitTimelineGroups", "Fit all items")
+              actionButton("fitTimelineGroups", "Fit all items"),
+              actionButton("showSubobjectives", "Show subobjectives")
               #actionButton("setWindowAnim", "Set window 2016-01-07 to 2016-01-25"),
               #actionButton("setWindowNoAnim", "Set window without animation"),
               #actionButton("center", "Center around 2016-01-23"),
@@ -59,17 +62,17 @@ fluidPage(
       ),
       fluidRow(
         column(9,
-          fluidRow(
-            column(12,timevisOutput("timelineGroups"))
-          )
+               fluidRow(
+                 column(12,timevisOutput("timelineGroups"))
+               )
         ),
         column(3,
                div(id = 'acronymsTable',
                    class = 'tableSection',
-               fluidRow(
-                 tags$h4("Acronyms:"),
-                 column(12,DT::dataTableOutput("acronyms"))
-               )
+                   fluidRow(
+                     tags$h4("Acronyms:"),
+                     column(12,DT::dataTableOutput("acronyms"))
+                   )
                )
         )
       ),
@@ -79,14 +82,14 @@ fluidPage(
                  "on GitHub")
       )
     ),
-
+    
     tabPanel(
       div(icon("sliders"), "Fully interactive demo"),
       fluidRow(
         column(
           8,
           fluidRow(column(12,
-            timevisOutput("timelineInteractive")
+                          timevisOutput("timelineInteractive")
           )),
           fluidRow(
             column(
@@ -131,17 +134,17 @@ fluidPage(
           )
         ),
         column(4,
-           div(
-             id = "timelinedata",
-             class = "optionsSection",
-             tags$h4("Data:"),
-             tableOutput("table"),
-             hr(),
-             div(tags$strong("Visible window:"),
-                 textOutput("window", inline = TRUE)),
-             div(tags$strong("Selected items:"),
-                 textOutput("selected", inline = TRUE))
-           )
+               div(
+                 id = "timelinedata",
+                 class = "optionsSection",
+                 tags$h4("Data:"),
+                 tableOutput("table"),
+                 hr(),
+                 div(tags$strong("Visible window:"),
+                     textOutput("window", inline = TRUE)),
+                 div(tags$strong("Selected items:"),
+                     textOutput("selected", inline = TRUE))
+               )
         )
       ),
       div(class = "sourcecode",

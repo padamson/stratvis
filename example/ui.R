@@ -28,15 +28,15 @@ fluidPage(
       appName
     ),
     div(id = "subtitle",
-        appDescription),
-    div(id = "subsubtitle",
-        "A",
-        tags$a(href = "http://dataprone.info", "DataProne"),
-        "App",
-        HTML("&bull;"),
-        "Available",
-        tags$a(href = "https://github.com/padamson/stratvis", "on GitHub")
-    )
+        appDescription)#,
+    #div(id = "subsubtitle",
+        #"A",
+        #tags$a(href = "http://dataprone.info", "DataProne"),
+        #"App",
+        #HTML("&bull;"),
+        #"Available",
+        #tags$a(href = "https://github.com/padamson/stratvis", "on GitHub")
+    #)
   ),
   tabsetPanel(
     id = "mainnav",
@@ -49,8 +49,8 @@ fluidPage(
           div(id = "interactiveActions",
               class = "optionsSection",
               #tags$h4("Actions:"),
-              actionButton("fitTimelineGroups", "Fit all items"),
-              actionButton("showSubobjectives", "Show subobjectives")
+              actionButton("fitTimelineGroups", "Fit all items")#,
+              #actionButton("showSubobjectives", "Show subobjectives")
               #actionButton("setWindowAnim", "Set window 2016-01-07 to 2016-01-25"),
               #actionButton("setWindowNoAnim", "Set window without animation"),
               #actionButton("center", "Center around 2016-01-23"),

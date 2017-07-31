@@ -31,5 +31,5 @@ dataGroups <-
 
 groups <- read.csv(file=groupfile)
 acronyms <- read.csv(file=acrofile)
-objectives <- read.csv(file=objfile)
-subobjectives <- read.csv(file=subobjfile)
+#objectives <- read.csv(file=objfile)
+#subobjectives <- read.csv(file=subobjfile)

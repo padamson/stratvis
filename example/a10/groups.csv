@@ -1,0 +1,4 @@
+id,content,className,style
+nwc,NWC,nwcGroup,color: black; background-color: #a8c0fc;
+afcs,AFCS,afcsGroup,color: black; background-color: #d7e5e5;
+majcom,MAJCOM,majcomGroup,color: black; background-color: #bbbbbb;

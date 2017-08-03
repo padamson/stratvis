@@ -49,8 +49,11 @@ fluidPage(
           div(id = "interactiveActions",
               class = "optionsSection",
               #tags$h4("Actions:"),
-              actionButton("fitTimelineGroups", "Fit all items")#,
-              #actionButton("showSubobjectives", "Show subobjectives")
+              actionButton("fitTimelineGroups", "Fit all items"),
+              actionButton("showAllGoals", "Show All Goals"),
+              actionButton("showIW1Goals", "Show IW1 Goals"),
+              actionButton("showIW2Goals", "Show IW2 Goals"),
+              actionButton("hideGoals", "Hide Goals")#,
               #actionButton("setWindowAnim", "Set window 2016-01-07 to 2016-01-25"),
               #actionButton("setWindowNoAnim", "Set window without animation"),
               #actionButton("center", "Center around 2016-01-23"),

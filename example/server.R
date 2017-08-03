@@ -3,29 +3,56 @@ library(dplyr)
 library(stringr)
 
 source("setup.R", local=TRUE)
-source("readData.R", local = TRUE)
 source("utils.R", local = TRUE)
 
 function(input, output, session) {
   
-  output$timelineGroups <- renderTimevis({
+  renderTimeline <- function(dataGroups){
     
-    config <- list(
-      order = htmlwidgets::JS('function(a,b) {return a.id - b.id;}'),
-      editable = FALSE,
-      align = "center",
-      orientation = "top",
-      margin = list(item = 5, axis = 5)
-    )
-    timevis(data = dataGroups, groups = groups, options = config)
-  })
+    output$timelineGroups <- renderTimevis({
+      
+      config <- list(
+        order = htmlwidgets::JS('function(a,b) {return a.id - b.id;}'),
+        editable = FALSE,
+        align = "center",
+        orientation = "top",
+        margin = list(item = 5, axis = 5)
+      )
+      timevis(data = dataGroups, groups = groups, options = config)
+    })
+    
+  }
+  
+  goalList <- NULL
+  source("readData.R", local=TRUE)
+  renderTimeline(dataGroups)
   
   observeEvent(input$fitTimelineGroups, {
     fitWindow("timelineGroups")
   })
   
-  observeEvent(input$showSubobjectives, {
-    addSubobjectives("timelineGroups", subobjectives)
+  observeEvent(input$showAllGoals, {
+    goalList <- c(1,2)
+    source("readData.R", local=TRUE)
+    renderTimeline(dataGroups)
+  })
+  
+  observeEvent(input$showIW1Goals, {
+    goalList <- c(1)
+    source("readData.R", local=TRUE)
+    renderTimeline(dataGroups)
+  })
+  
+  observeEvent(input$showIW2Goals, {
+    goalList <- c(2)
+    source("readData.R", local=TRUE)
+    renderTimeline(dataGroups)
+  })
+  
+  observeEvent(input$hideGoals, {
+    goalList <- NULL
+    source("readData.R", local=TRUE)
+    renderTimeline(dataGroups)
   })
   
   output$acronyms <- DT::renderDataTable({
